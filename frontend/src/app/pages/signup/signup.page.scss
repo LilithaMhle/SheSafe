@@ -97,7 +97,7 @@ $glass-border: rgba(255, 255, 255, 0.20);
     0 0 0 8px rgba(200, 100, 130, 0.07),
     0 6px 28px rgba(200, 100, 130, 0.28);
 
-  img { width: 32px; height: 32px; object-fit: contain; }
+  img { width: 100%; height: 100%; object-fit: contain; }
 }
 
 .auth-title {
@@ -266,6 +266,113 @@ $glass-border: rgba(255, 255, 255, 0.20);
   cursor: pointer;
   text-decoration: underline;
   text-underline-offset: 2px;
+}
+
+// ─── Checkbox ─────────────────────────────────────────────────
+.checkbox-field {
+  margin-bottom: 16px;
+}
+
+.checkbox-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 6px;
+
+  .checkbox-input {
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    margin-top: 2px;
+    cursor: pointer;
+    accent-color: #C97B8A;
+    flex-shrink: 0;
+  }
+}
+
+.checkbox-text {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.4;
+  margin: 0;
+  cursor: default;
+}
+
+// ─── Modal styling ────────────────────────────────────────────
+ion-modal {
+  --background: rgba(255, 255, 255, 0.1);
+  --backdrop-opacity: 0.6;
+  --border-radius: 16px;
+  --box-shadow: 0 8px 32px rgba(200, 100, 130, 0.3);
+  --height: 85vh;
+  --max-height: 85vh;
+  --max-width: 500px;
+  --width: 90vw;
+  --display: flex;
+  --flex-direction: column;
+
+  ion-header {
+    --background: rgba(255, 255, 255, 0.1);
+    --backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+    ion-toolbar {
+      --background: transparent;
+      --border-width: 0;
+
+      ion-title {
+        color: #fff;
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 1.25rem;
+        font-weight: 600;
+      }
+
+      ion-buttons {
+        ion-button {
+          --color: #fff;
+          --background-hover: rgba(255, 255, 255, 0.1);
+          --border-radius: 8px;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+
+  ion-content {
+    --background: rgba(255, 255, 255, 0.05);
+    --backdrop-filter: blur(10px);
+    --padding-top: 16px;
+    --padding-bottom: 16px;
+    --padding-start: 16px;
+    --padding-end: 16px;
+    --overflow: auto;
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    flex: 1;
+    overflow-y: auto;
+
+    h2 {
+      color: #fff;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0 0 16px 0;
+      text-align: center;
+    }
+
+    p {
+      margin: 0 0 12px 0;
+      text-align: justify;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
 }
 
 // ─── CTA button ───────────────────────────────────────────────

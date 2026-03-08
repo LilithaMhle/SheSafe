@@ -28,6 +28,10 @@ export class SignupPage implements OnInit {
   showConfirm:     boolean = false;
   loading:         boolean = false;
   signUpSuccess:   boolean = false;
+  agreeToTerms:    boolean = false;
+  agreeError:      string  = '';
+  termsModalOpen:  boolean = false;
+  privacyModalOpen: boolean = false;
 
   // ── Focus tracking ───────────────────────────────────────────
   firstNameFocused: boolean = false;
@@ -88,13 +92,19 @@ export class SignupPage implements OnInit {
       this.isValidEmail(this.email)           &&
       this.strengthScore === 4                &&
       this.password === this.confirmPassword  &&
-      this.confirmPassword.length > 0
+      this.confirmPassword.length > 0         &&
+      this.agreeToTerms
     );
   }
 
   // ── Sign up submit ────────────────────────────────────────────
   onSignUp(): void {
     if (!this.isFormValid()) return;
+
+    if (!this.agreeToTerms) {
+      this.agreeError = 'You must accept the Terms of Service and Privacy Policy before creating an account.';
+      return;
+    }
 
     this.loading = true;
 
@@ -108,6 +118,23 @@ export class SignupPage implements OnInit {
   // ── Navigate to login ─────────────────────────────────────────
   goToLogin(): void {
     this.router.navigate(['/login'], { replaceUrl: true });
+  }
+
+  // ── Modal methods ────────────────────────────────────────────
+  openTermsModal(): void {
+    this.termsModalOpen = true;
+  }
+
+  closeTermsModal(): void {
+    this.termsModalOpen = false;
+  }
+
+  openPrivacyModal(): void {
+    this.privacyModalOpen = true;
+  }
+
+  closePrivacyModal(): void {
+    this.privacyModalOpen = false;
   }
 
 }

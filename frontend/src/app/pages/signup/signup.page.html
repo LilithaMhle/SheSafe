@@ -15,7 +15,7 @@
     <div class="auth-header">
       <div class="logo-badge">
         <img
-          src="https://scontent.fdur5-1.fna.fbcdn.net/v/t39.30808-1/647141569_924108493431298_6230151781270152750_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=105&ccb=1-7&_nc_sid=e99d92&_nc_ohc=TGuYnSZKHA8Q7kNvwGqXqyk&_nc_oc=AdnLrWjs6SLszIs6w1enAPqX-PM6E6ozDi7uc_VaNernzTJem2lcvxGIYwctvkzyTIU&_nc_zt=24&_nc_ht=scontent.fdur5-1.fna&_nc_gid=8s1wOobL4jOlaHNNDiNZ8g&_nc_ss=8&oh=00_AfwZJGU4_dou25xqzekZjaXurANTZ7X1d_Vm3LJAbeQYUg&oe=69B11D46"
+          src="https://res.cloudinary.com/dfvudlvl7/image/upload/v1772966451/shesafe-logo_rivtwe.png"
           alt="SheSafe Logo"
         />
       </div>
@@ -35,7 +35,6 @@
             <ion-icon name="person-outline" class="input-icon"></ion-icon>
             <ion-input
               type="text"
-              placeholder="Nomsa"
               [(ngModel)]="firstName"
               (ionFocus)="firstNameFocused = true"
               (ionBlur)="firstNameFocused = false"
@@ -48,7 +47,6 @@
           <div class="input-glass" [class.input-focus]="lastNameFocused">
             <ion-input
               type="text"
-              placeholder="Dlamini"
               [(ngModel)]="lastName"
               (ionFocus)="lastNameFocused = true"
               (ionBlur)="lastNameFocused = false"
@@ -196,13 +194,16 @@
         </span>
       </div>
 
-      <!-- Terms note -->
-      <p class="terms-note">
-        By signing up you agree to our
-        <span class="terms-link">Terms of Service</span>
-        and
-        <span class="terms-link">Privacy Policy</span>
-      </p>
+      <!-- Agreement checkbox -->
+      <div class="checkbox-field">
+        <div class="checkbox-wrapper">
+          <input type="checkbox" [(ngModel)]="agreeToTerms" (change)="agreeError = ''" class="checkbox-input" />
+          <label class="checkbox-text">
+            I agree to the <span class="terms-link" (click)="openTermsModal()">Terms of Service</span> and <span class="terms-link" (click)="openPrivacyModal()">Privacy Policy</span>.
+          </label>
+        </div>
+        <span class="field-error" *ngIf="agreeError">{{ agreeError }}</span>
+      </div>
 
       <!-- Create Account button -->
       <div
@@ -222,6 +223,49 @@
     </div>
   </div>
 
+  <!-- Terms of Service Modal -->
+  <ion-modal [isOpen]="termsModalOpen" (willDismiss)="closeTermsModal()">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Terms of Service</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="closeTermsModal()">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <h2>Terms of Service – SheSafe</h2>
+        <p>By creating an account and using the SheSafe app, you agree to use the platform responsibly and respectfully. SheSafe is designed to help users, especially students, learn about the safety of menstrual pad products by sharing information about ingredients, possible health risks, and user reviews.</p>
+        <p>The information provided in this app is for educational and awareness purposes only. SheSafe does not provide medical advice, diagnoses, or treatment. Users should consult qualified healthcare professionals for medical concerns or decisions about their health.</p>
+        <p>Users are responsible for the content they post, including reviews and comments. Reviews should be honest, respectful, and based on personal experience. Any abusive, misleading, or harmful content may be removed to maintain a safe and supportive community.</p>
+        <p>By using SheSafe, you agree not to misuse the platform, attempt to harm the system, or post false or harmful information. The purpose of this platform is to promote awareness, safety, and informed choices regarding menstrual health products.</p>
+        <p>SheSafe may update or improve the platform from time to time to better support users and improve awareness about menstrual product safety.</p>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <!-- Privacy Policy Modal -->
+  <ion-modal [isOpen]="privacyModalOpen" (willDismiss)="closePrivacyModal()">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Privacy Policy</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="closePrivacyModal()">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <h2>Privacy Policy – SheSafe</h2>
+        <p>SheSafe respects your privacy and is committed to protecting your personal information. When you create an account, the app may collect basic information such as your name, email address, and login credentials. This information is used only to manage your account and allow you to participate in features such as posting reviews.</p>
+        <p>Your personal information will not be sold, shared, or distributed to third parties. The data collected is used solely for the purpose of improving the SheSafe platform and providing a safe and informative experience for users.</p>
+        <p>User reviews and comments may be visible to other users of the platform, but sensitive personal information will not be displayed publicly.</p>
+        <p>SheSafe takes reasonable steps to protect user data and maintain the security of the platform. However, users should also take care to protect their account information and avoid sharing personal details in public reviews or comments.</p>
+        <p>By using the SheSafe app, you acknowledge that your information will be used according to this privacy policy to help provide a safe, educational, and supportive platform for menstrual health awareness.</p>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 
   <!-- ══════════════════════════════════════════════════════════
        SUCCESS CONFIRMATION SCREEN

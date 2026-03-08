@@ -133,6 +133,7 @@ $glass-border: rgba(255, 255, 255, 0.24);
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;          // ← ensures image stays within circle
   margin-bottom: 8px;
 
   box-shadow:
@@ -144,9 +145,10 @@ $glass-border: rgba(255, 255, 255, 0.24);
   animation: pulse-ring 3s ease-in-out infinite;
 
   img {
-    width: 68px;
-    height: 68px;
-    object-fit: contain;
+    width: 100%;             // ← fills the full ring
+    height: 100%;
+    object-fit: contain;       // ← contains without cropping
+    border-radius: 50%;      // ← keeps it circular
   }
 }
 
@@ -188,12 +190,12 @@ $glass-border: rgba(255, 255, 255, 0.24);
   margin: 0;
   text-align: center;
   line-height: 1.6;
-  max-width: 240px;
+  max-width: 280px;          // ← slightly wider so it fits on one line
 }
 
 // ─── Loading bar ──────────────────────────────────────────────
 .loader-track {
-  width: 140px;
+  width: min(200px, 55vw);   // ← responsive: grows on larger screens
   height: 3px;
   background: rgba(255, 255, 255, 0.10);
   border-radius: 99px;
