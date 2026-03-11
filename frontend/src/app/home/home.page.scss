@@ -3,23 +3,33 @@
 
 // ─── Header ─────────────────────────────────────────────────────
 .she-header ion-toolbar {
-  --background: #fff0f5;
-  --border-color: #fce7f3;
+  --background: #110508;
+  --border-color: #2a0c14;
+  --color: #ffffff;
 }
 
 .she-title {
   font-size: 1.3rem;
   font-weight: 700;
-  color: #9d174d;
+  color: #ffffff;
   letter-spacing: -0.3px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
-  .title-icon { margin-right: 4px; }
+.title-logo {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid rgba(255,255,255,0.25);
 }
 
 .guide-btn {
   font-size: 0.8rem;
-  color: #be185d;
-  --color: #be185d;
+  color: #E8A5B0;
+  --color: #E8A5B0;
 }
 
 // ─── Hero Banner ─────────────────────────────────────────────────
@@ -606,13 +616,13 @@
 // ─── Added: Greeting & Logout ─────────────────────────────────
 .user-greeting {
   font-size: 0.75rem;
-  color: #be185d;
+  color: rgba(232,165,176,0.85);
   font-weight: 500;
   padding-left: 4px;
 }
 
 .logout-btn {
-  --color: #be185d;
+  --color: rgba(232,165,176,0.85);
   font-size: 0.85rem;
 }
 
